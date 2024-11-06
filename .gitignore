@@ -1,0 +1,37 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment directories
+/.venv/
+Pipfile.lock
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.tar.gz
+
+# Pipenv specific files
+Pipfile.lock
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+
+# Jupyter Notebooks checkpoint files
+.ipynb_checkpoints/
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Other
+.env
+
+#logfile
+ssh_honeypot.log
