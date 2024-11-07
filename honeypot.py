@@ -80,7 +80,7 @@ class SSHHoneypotGUI:
     def log_to_console(self, message):
         self.console_output.insert(tk.END, f"{message}\n")
         self.console_output.see(tk.END)
-        self.log_to_file(self,message)
+        self.log_to_file(message)
 
     def log_to_file(self, message):
         with open(self.log_file, "a") as f:
