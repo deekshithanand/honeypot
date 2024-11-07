@@ -99,7 +99,7 @@ class SSHHoneypotGUI:
         ip = self.ip_unblock_entry.get().strip()
         try:
             self.blocked_ips.remove(ip)
-            self.log_to_console(f"IP {ip} has been blocked.")
+            self.log_to_console(f"IP {ip} has been unblocked.")
         except Exception:
              messagebox.showwarning("IP not blocked to unblock")
         self.ip_unblock_entry.delete(0, tk.END)
@@ -107,7 +107,7 @@ class SSHHoneypotGUI:
     def is_malicious_ip(self, ip):
         # simple rule for a "malicious" IP: multiple connection attempts
         self.connection_counts[ip] += 1
-        if self.connection_counts[ip] > 2:
+        if self.connection_counts[ip] > 1:
             return True
         return False
 
