@@ -7,6 +7,7 @@ from tkinter import messagebox, scrolledtext, ttk
 
 import paramiko
 
+HOST_KEY = paramiko.RSAKey(filename='server.key')
 
 class SSHHoneypotServer(paramiko.ServerInterface):
     def __init__(self):
@@ -102,7 +103,6 @@ class SSHHoneypotGUI:
 
         # Initialize log file and SSH host key
         self.log_file = "ssh_honeypot.log"
-        self.hostkey = paramiko.RSAKey.generate(2048)
         self.active_connections = defaultdict(list)
 
     def log_to_console(self, message):
@@ -228,7 +228,7 @@ class SSHHoneypotGUI:
         try:
             self.log_to_console(f"Handling SSH interaction with {ip}")
             transport = paramiko.Transport(client)
-            transport.add_server_key(self.hostkey)
+            transport.add_server_key(HOST_KEY)
             server = SSHHoneypotServer()
             transport.start_server(server=server)
             channel = transport.accept(120)
